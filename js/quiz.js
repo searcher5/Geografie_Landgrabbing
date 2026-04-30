@@ -25,38 +25,92 @@
 const QUESTIONS = [
 
   {
-    question: "Was versteht man unter 'Grilagem' in Brasilien?",
+    question: "Warum ist Land Grabbing oft besonders problematisch für indigene Völker?",
     answers: [
-      { text: "Eine traditionelle Anbaumethode indigener Völker",         correct: false },
-      { text: "Landraub durch gefälschte Eigentumsdokumente",              correct: true  },
-      { text: "Ein staatliches Umsiedlungsprogramm",                       correct: false },
-      { text: "Das Roden von Wald, um Land als Ackerland anzumelden",      correct: true  },
+      { text: "Sie haben oft keinen Zugang zu Anwält*innen oder Bildung, um sich zu wehren",         correct: true },
+      { text: "Ihr Land ist häufig nicht offiziell dokumentiert",              correct: true  },
+      { text: "Sie besitzen meist zu viel Land",                       correct: false },
+      { text: "Sie leben hauptsächlich in Städten",      correct: false  },
     ],
-    explanation: "Grilagem bezeichnet in Brasilien den Landraub durch gefälschte Dokumente. Der Begriff kommt von 'Grilos' (Grillen) — angeblich wurden früher Dokumente in Schachteln mit Grillen gelegt, damit das Papier gealtert und legitimer wirkte. Oft wird das Land zuerst gerodet, damit die Behörden es als bewirtschaftetes Land anerkennen."
+    explanation: "Indigene Völker sind besonders betroffen von Land Grabbing, da sie wegen ihrer mangelnden Bildung und Einbindung in das Rechtssystem des Staates keine offiziellen Dokumente besorgen können oder wollen. Auch fallen sie öfter auf Überzeugungsstrategien der Regierung oder der Investor*innen herein, ihr Land abzugeben."
   },
 
   {
-    question: "Welche der folgenden Aussagen zum Gilgel Gibe III Damm in Äthiopien sind korrekt?",
+    question: "Was beschreibt der Begriff 'Grilagem' in Brasilien am besten?",
     answers: [
-      { text: "Er ist der höchste Damm Afrikas",                                          correct: true  },
-      { text: "Er wurde 2015 fertiggestellt",                                              correct: true  },
-      { text: "Er versorgt die lokale Bevölkerung zuverlässig mit Trinkwasser",            correct: false },
-      { text: "Er unterbricht die jährlichen Überschwemmungen des Omo-Flusses",            correct: true  },
+      { text: "Schutz indigener Gebiete",                                          correct: false  },
+      { text: "Illegales Aneignen von Land durch gefälschte Dokumente",                                              correct: true  },
+      { text: "Staatliche Landreform",            correct: false },
+      { text: "Nachhaltige Landwirtschaft",            correct: false  },
     ],
-    explanation: "Der Gilgel Gibe III ist tatsächlich der höchste Damm Afrikas und wurde 2015 fertiggestellt. Statt der lokalen Bevölkerung zu nutzen, schadet er ihr: Die Unterbrechung der Überschwemmungen des Omo-Flusses entzieht den rund 200'000 Einwohner*innen des unteren Omo-Tals ihre natürliche Bewässerung."
+    explanation: "'Grilagem' bezeichnet den Landgewinn durch Land Grabbing und ist meistens mit einer Rodung des (Regen-) Waldes verbunden. Grilagem hat in Brasilien eine weit zurückreichende Geschichte und ist eng mit dem Abholzen des Amazonas' verknüpft."
   },
 
   {
-    question: "Warum ist indigenes Land in Indonesien besonders gefährdet?",
+    question: "Warum können Investor*innen in Indonesien relativ einfach Land erwerben?",
     answers: [
-      { text: "Über 80% des indigenen Landes wird vom Staat nicht anerkannt",   correct: true  },
-      { text: "Indigene Völker haben gesetzlich kein Recht auf Landbesitz",      correct: false },
-      { text: "Nicht anerkanntes Land gilt als staatliches Land und kann verkauft werden", correct: true },
-      { text: "Indigene Gemeinschaften werden durch mangelnde Bildung leicht überredet", correct: true },
+      { text: "Weil das Land kostenlos ist",   correct: false  },
+      { text: "Weil es kaum Landwirtschaft gibt",      correct: false },
+      { text: "Da es auf der Insel keine staatliche Überwachung gibt", correct: false },
+      { text: "Weil viel Land staatlich ist und indigene Rechte nicht anerkannt werden", correct: true },
     ],
-    explanation: "In Indonesien wird über 80% des traditionell von indigenen Völkern bewirtschafteten Landes vom Staat nicht anerkannt — es gilt rechtlich als Staatsland und kann günstig an Investor*innen vergeben werden. Gesetzlich haben indigene Völker grundsätzlich Rechte, doch die fehlende formelle Anerkennung und Bildungsunterschiede machen sie verwundbar."
+    explanation: "In Indonesien wird über 80% des traditionell von indigenen Völkern bewirtschafteten Landes vom Staat nicht anerkannt. Es gilt rechtlich als Staatsland und kann günstig an Investor*innen vergeben werden. Gesetzlich haben indigene Völker grundsätzlich Rechte, doch die fehlende formelle Anerkennung und Bildungsunterschiede machen sie verwundbar."
+  },
+  
+  {
+    question: "Warum profitieren Einheimische oft nicht von neuen Plantagen durch Land Grabbing?",
+    answers: [
+      { text: "Die Arbeitsplätze werden meist schlecht bezahlt",   correct: true  },
+      { text: "Die Produkte werden exportiert, statt lokal verwendet zu werden",      correct: true },
+      { text: "Die versprochene Infrastruktur wird nicht gebaut oder dient den Einheimischen nicht", correct: true },
+      { text: "Die Pacht bringt nicht viel Geld ein und dieses fliesst oft an die Regierung statt an die lokale Gemeinde", correct: true },
+    ],
+    explanation: "Auf Plantagen dieser Investor*innen werden nur selten lokale Nahrungsmittel angebaut. Oft werden Pflanzen für Nutztiere oder Biokraftstoff angebaut. Um mit der Konkurrenz mithalten zu können, setzen die Farmbesitzer*innen auf billige Arbeitskräfte und kaufen nur das preiswerteste Land. Solange der Export läuft, kümmern sie sich nicht um lokale Infrastruktur oder das Wohl der Anwohnenden."
   },
 
+  {
+    question: "Welche Rolle spielen internationale Abkommen beim Land Grabbing?",
+    answers: [
+      { text: "Sie verhindern Landkäufe komplett",   correct: false  },
+      { text: "Sie schützen nur die lokale Bevölkerung",      correct: false },
+      { text: "Sie schützen Investitionen ", correct: true },
+      { text: "Sie liberalisieren Landkäufe", correct: true },
+    ],
+    explanation: "Viele internationale Abkommen sind neoliberalistisch geprägt. Sie schützen Investitionen und sorgen dafür, dass man risikofrei und möglichst unbürokratisch Agrarflächen in anderen Ländern kaufen oder pachten kann."
+  },
+
+  {
+    question: "Warum wird Land Grabbing oft als „rechtliche Grauzone“ bezeichnet?",
+    answers: [
+      { text: "Weil Gesetze unklar sind oder umgangen werden",   correct: true  },
+      { text: "Weil es nur in S1 und S2 Ländern passiert",      correct: false },
+      { text: "Weil es immer illegal ist", correct: false },
+      { text: "Weil die Staaten nichts gegen die Investor*innen tun dürfen", correct: false },
+    ],
+    explanation: "Investor*innen, die Land Grabbing betreiben, profitieren oft von schlechter Regulierung. Was sie tun, kann oft als legal ausgelegt werden, obwohl es soziale und ökologische Konsequenzen nach sich zieht. Allerdings müssen sich auch Land Grabber nicht gesetzlich immun. Deswegen sind besonders Gebiete mit schwacher staatlicher Kontrolle beliebt."
+  },
+  
+  {
+    question: "Warum führt Land Grabbing oft zu Konflikten?",
+    answers: [
+      { text: "Weil dort bereits andere Bauprojekte im Gange sind",   correct: false  },
+      { text: "Weil verschiedene Gruppen Anspruch auf dasselbe Land erheben",      correct: true },
+      { text: "Weil es zu viel Land gibt", correct: false },
+      { text: "Weil Investor*innen keine Gewinne machen", correct: false },
+    ],
+    explanation: "Viele Gebiete, die billig aufgekauft werden, gehörten davor einzelnen Bäuer*innen oder Völkern. Doch anders als in der Schweiz reicht das Argument des Gewohnheitsrechts in betroffenen Ländern oft nicht aus. Keine Urkunde: Kein Anrecht."
+  },
+
+  {
+    question: "Inwiefern hat Land Grabbing einen Einfluss auf die globale Hungerkrise?",
+    answers: [
+      { text: "Land Grabbing verschärft die Hungersituation, da fruchtbares Land oft für Exportprodukte genutzt wird, wodurch lokale Kleinbauern verdrängt werden.",   correct: false  },
+      { text: "Land Grabbing verbessert grundsätzlich die Ernährungssituation, da grosse Investor*innen effizienter produzieren und somit mehr Nahrung für die lokalen Gemeinden verfügbar wird.",      correct: true },
+      { text: "Land Grabbing hat kaum Einfluss auf Hunger, da die globale Nahrungsmittelproduktion bereits ausreichend ist und Hunger nur durch individuelle Faktoren entsteht.", correct: false },
+      { text: "Nach zu intensiver Bewirtschaftung des Agrarlands wird das unfruchtbare Land zurück gelassen und kann nicht mehr zur lokalen Nahrungsmittelproduktion verwendet werden. ", correct: false },
+    ],
+    explanation: "Viele Gebiete, die billig aufgekauft werden, gehörten davor einzelnen Bäuer*innen oder Völkern. Doch anders als in der Schweiz reicht das Argument des Gewohnheitsrechts in betroffenen Ländern oft nicht aus. Keine Urkunde: Kein Anrecht."
+  },
 ];
 
 // ============================================================
