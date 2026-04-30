@@ -1,0 +1,601 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Quiz — Land Grabbing</title>
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Source+Sans+3:wght@300;400;600&display=swap" rel="stylesheet">
+  <style>
+    /* ── Quiz Page Layout ── */
+    body { min-height: 100vh; display: flex; flex-direction: column; }
+
+    .quiz-page-header {
+      background: var(--accent);
+      color: #fff;
+      padding: 2rem 2rem 1.75rem;
+      text-align: center;
+    }
+    .quiz-page-header .back-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      color: rgba(255,255,255,0.65);
+      text-decoration: none;
+      font-size: 0.82rem;
+      margin-bottom: 1rem;
+      transition: color 0.15s;
+    }
+    .quiz-page-header .back-link:hover { color: #fff; }
+    .quiz-page-header h1 {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(1.8rem, 4vw, 2.6rem);
+      font-weight: 700;
+      margin-bottom: 0.4rem;
+    }
+    .quiz-page-header p {
+      opacity: 0.75;
+      font-size: 0.95rem;
+    }
+
+    /* ── Progress bar ── */
+    .quiz-progress-wrap {
+      background: rgba(0,0,0,0.18);
+      height: 4px;
+      width: 100%;
+      margin-top: 1.25rem;
+      border-radius: 2px;
+      overflow: hidden;
+    }
+    .quiz-progress-bar {
+      height: 100%;
+      background: rgba(255,255,255,0.75);
+      border-radius: 2px;
+      transition: width 0.4s ease;
+    }
+
+    /* ── Main container ── */
+    .quiz-page-main {
+      flex: 1;
+      display: flex;
+      align-items: flex-start;
+      justify-content: center;
+      padding: 3rem 1.5rem 4rem;
+    }
+
+    .quiz-stage {
+      width: 100%;
+      max-width: 680px;
+    }
+
+    /* ── Step counter ── */
+    .quiz-step-label {
+      font-size: 0.78rem;
+      font-weight: 600;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--text-muted);
+      margin-bottom: 1.5rem;
+    }
+    .quiz-step-label span { color: var(--accent); }
+
+    /* ── Question card ── */
+    .qcard {
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: 16px;
+      padding: 2rem;
+      box-shadow: 0 4px 24px rgba(0,0,0,0.07);
+      animation: fadeUp 0.35s ease both;
+    }
+    @keyframes fadeUp {
+      from { opacity: 0; transform: translateY(14px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+
+    .qcard-question {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.25rem;
+      font-weight: 700;
+      color: var(--text);
+      line-height: 1.45;
+      margin-bottom: 1.5rem;
+    }
+
+    .qcard-hint {
+      font-size: 0.8rem;
+      color: var(--text-muted);
+      margin-bottom: 1rem;
+      font-style: italic;
+    }
+
+    /* ── Options ── */
+    .qcard-options {
+      display: flex;
+      flex-direction: column;
+      gap: 0.6rem;
+    }
+
+    .qopt {
+      display: flex;
+      align-items: flex-start;
+      gap: 12px;
+      cursor: pointer;
+      padding: 0.85rem 1rem;
+      border-radius: 10px;
+      border: 1.5px solid var(--border);
+      background: var(--bg);
+      transition: border-color 0.15s, background 0.15s, transform 0.1s;
+      user-select: none;
+    }
+    .qopt:hover:not(.locked) { border-color: var(--accent); background: var(--tag-bg); transform: translateX(2px); }
+
+    .qopt input[type="checkbox"] { display: none; }
+
+    .qopt-box {
+      width: 22px;
+      height: 22px;
+      min-width: 22px;
+      border-radius: 5px;
+      border: 2px solid var(--border);
+      background: #fff;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: background 0.15s, border-color 0.15s;
+      margin-top: 1px;
+      font-size: 13px;
+      font-weight: 700;
+      color: #fff;
+    }
+
+    .qopt input:checked ~ .qopt-box {
+      background: var(--accent);
+      border-color: var(--accent);
+    }
+    .qopt input:checked ~ .qopt-box::after { content: '✓'; }
+
+    .qopt-text {
+      font-size: 1rem;
+      color: var(--text-muted);
+      line-height: 1.45;
+    }
+
+    /* ── Result states ── */
+    .qopt.res-correct {
+      background: #edfaf1;
+      border-color: #27ae60;
+    }
+    .qopt.res-correct .qopt-box {
+      background: #27ae60;
+      border-color: #27ae60;
+    }
+    .qopt.res-correct .qopt-box::after { content: '✓'; }
+    .qopt.res-correct .qopt-text { color: #1a5c35; font-weight: 600; }
+
+    .qopt.res-incorrect {
+      background: #fdf0f0;
+      border-color: #e74c3c;
+    }
+    .qopt.res-incorrect .qopt-box {
+      background: #e74c3c;
+      border-color: #e74c3c;
+    }
+    .qopt.res-incorrect .qopt-box::after { content: '✗'; }
+    .qopt.res-incorrect .qopt-text { color: #7b1c1c; }
+
+    .qopt.res-missed {
+      background: #fffbea;
+      border-color: #f39c12;
+      border-style: dashed;
+    }
+    .qopt.res-missed .qopt-box::after { content: '!'; color: #f39c12; }
+    .qopt.res-missed .qopt-text { color: #7d5a00; }
+
+    /* ── Explanation ── */
+    .qcard-explanation {
+      margin-top: 1.25rem;
+      padding: 1rem 1.15rem;
+      background: var(--tag-bg);
+      border-left: 3px solid var(--accent);
+      border-radius: 0 10px 10px 0;
+      font-size: 0.93rem;
+      color: var(--text-muted);
+      line-height: 1.75;
+      animation: fadeUp 0.25s ease both;
+    }
+
+    /* ── Result badge on card ── */
+    .qcard-result-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      margin-bottom: 1rem;
+      font-size: 0.88rem;
+      font-weight: 600;
+      padding: 4px 12px;
+      border-radius: 20px;
+      animation: fadeUp 0.2s ease both;
+    }
+    .badge-ok  { background: #edfaf1; color: #1a5c35; border: 1px solid #27ae60; }
+    .badge-err { background: #fdf0f0; color: #7b1c1c; border: 1px solid #e74c3c; }
+
+    /* ── Navigation row ── */
+    .qcard-nav {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-top: 1.5rem;
+      gap: 0.75rem;
+      flex-wrap: wrap;
+    }
+
+    .btn {
+      padding: 0.65rem 1.6rem;
+      border-radius: 8px;
+      border: none;
+      font-family: 'Source Sans 3', sans-serif;
+      font-size: 0.95rem;
+      font-weight: 600;
+      cursor: pointer;
+      transition: background 0.15s, opacity 0.15s, transform 0.1s;
+    }
+    .btn:active { transform: scale(0.97); }
+    .btn:disabled { opacity: 0.4; cursor: default; }
+
+    .btn-primary { background: var(--accent); color: #fff; }
+    .btn-primary:hover:not(:disabled) { background: #6e1515; }
+
+    .btn-ghost {
+      background: var(--tag-bg);
+      color: var(--text-muted);
+      border: 1px solid var(--border);
+    }
+    .btn-ghost:hover { background: var(--border); }
+
+    .btn-next {
+      margin-left: auto;
+      background: var(--text);
+      color: #fff;
+    }
+    .btn-next:hover:not(:disabled) { background: #2e2414; }
+
+    /* ── Final score screen ── */
+    .score-screen {
+      text-align: center;
+      animation: fadeUp 0.4s ease both;
+    }
+
+    .score-donut-wrap {
+      margin: 0 auto 2rem;
+      width: 160px;
+      height: 160px;
+      position: relative;
+    }
+    .score-donut-wrap svg { width: 160px; height: 160px; transform: rotate(-90deg); }
+    .score-donut-track { fill: none; stroke: var(--border); stroke-width: 12; }
+    .score-donut-fill  {
+      fill: none;
+      stroke: var(--accent);
+      stroke-width: 12;
+      stroke-linecap: round;
+      transition: stroke-dashoffset 1s ease;
+    }
+    .score-donut-label {
+      position: absolute;
+      inset: 0;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+    }
+    .score-donut-num {
+      font-family: 'Playfair Display', serif;
+      font-size: 2.2rem;
+      font-weight: 700;
+      color: var(--accent);
+      line-height: 1;
+    }
+    .score-donut-sub {
+      font-size: 0.75rem;
+      color: var(--text-muted);
+      margin-top: 2px;
+    }
+
+    .score-title {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.8rem;
+      font-weight: 700;
+      color: var(--text);
+      margin-bottom: 0.5rem;
+    }
+    .score-subtitle {
+      color: var(--text-muted);
+      margin-bottom: 2rem;
+      font-size: 1rem;
+    }
+
+    .score-breakdown {
+      display: flex;
+      justify-content: center;
+      gap: 1.5rem;
+      margin-bottom: 2rem;
+      flex-wrap: wrap;
+    }
+    .score-item {
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      padding: 0.85rem 1.5rem;
+      text-align: center;
+      min-width: 90px;
+    }
+    .score-item-num {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.6rem;
+      font-weight: 700;
+    }
+    .score-item-num.ok  { color: #27ae60; }
+    .score-item-num.err { color: #e74c3c; }
+    .score-item-label { font-size: 0.78rem; color: var(--text-muted); margin-top: 2px; }
+
+    .score-actions {
+      display: flex;
+      gap: 0.75rem;
+      justify-content: center;
+      flex-wrap: wrap;
+    }
+
+    .hidden { display: none !important; }
+
+    footer {
+      text-align: center;
+      padding: 1.5rem;
+      font-size: 0.8rem;
+      color: var(--text-muted);
+      border-top: 1px solid var(--border);
+    }
+  </style>
+</head>
+<body>
+
+  <div class="quiz-page-header">
+    <div><a href="index.html" class="back-link">← Zurück zur Karte</a></div>
+    <h1>Ergebnissicherung</h1>
+    <p>Teste dein Wissen zum Thema Land Grabbing</p>
+    <div class="quiz-progress-wrap">
+      <div class="quiz-progress-bar" id="progressBar" style="width: 0%"></div>
+    </div>
+  </div>
+
+  <main class="quiz-page-main">
+    <div class="quiz-stage" id="quizStage">
+      <!-- filled by JS -->
+    </div>
+  </main>
+
+  <footer>
+    <p>Geografie-Projekt &middot; 2026 &middot; <a href="index.html" style="color:var(--text-muted)">← Zurück zur Karte</a></p>
+  </footer>
+
+<script>
+// ============================================================
+// FRAGEN HIER BEARBEITEN
+// ============================================================
+const QUESTIONS = [
+
+  {
+    question: "Was versteht man unter 'Grilagem' in Brasilien?",
+    answers: [
+      { text: "Eine traditionelle Anbaumethode indigener Völker",         correct: false },
+      { text: "Landraub durch gefälschte Eigentumsdokumente",              correct: true  },
+      { text: "Ein staatliches Umsiedlungsprogramm",                       correct: false },
+      { text: "Das Roden von Wald, um Land als Ackerland anzumelden",      correct: true  },
+    ],
+    explanation: "Grilagem bezeichnet in Brasilien den Landraub durch gefälschte Dokumente. Der Begriff kommt von 'Grilos' (Grillen) — angeblich wurden früher Dokumente in Schachteln mit Grillen gelegt, damit das Papier gealtert und legitimer wirkte. Oft wird das Land zuerst gerodet, damit die Behörden es als bewirtschaftetes Land anerkennen."
+  },
+
+  {
+    question: "Welche der folgenden Aussagen zum Gilgel Gibe III Damm in Äthiopien sind korrekt?",
+    answers: [
+      { text: "Er ist der höchste Damm Afrikas",                                          correct: true  },
+      { text: "Er wurde 2015 fertiggestellt",                                              correct: true  },
+      { text: "Er versorgt die lokale Bevölkerung zuverlässig mit Trinkwasser",            correct: false },
+      { text: "Er unterbricht die jährlichen Überschwemmungen des Omo-Flusses",            correct: true  },
+    ],
+    explanation: "Der Gilgel Gibe III ist tatsächlich der höchste Damm Afrikas und wurde 2015 fertiggestellt. Statt der lokalen Bevölkerung zu nutzen, schadet er ihr: Die Unterbrechung der Überschwemmungen des Omo-Flusses entzieht den rund 200'000 Einwohner*innen des unteren Omo-Tals ihre natürliche Bewässerung."
+  },
+
+  {
+    question: "Warum ist indigenes Land in Indonesien besonders gefährdet?",
+    answers: [
+      { text: "Über 80% des indigenen Landes wird vom Staat nicht anerkannt",   correct: true  },
+      { text: "Indigene Völker haben gesetzlich kein Recht auf Landbesitz",      correct: false },
+      { text: "Nicht anerkanntes Land gilt als staatliches Land und kann verkauft werden", correct: true },
+      { text: "Indigene Gemeinschaften werden durch mangelnde Bildung leicht überredet", correct: true },
+    ],
+    explanation: "In Indonesien wird über 80% des traditionell von indigenen Völkern bewirtschafteten Landes vom Staat nicht anerkannt — es gilt rechtlich als Staatsland und kann günstig an Investor*innen vergeben werden. Gesetzlich haben indigene Völker grundsätzlich Rechte, doch die fehlende formelle Anerkennung und Bildungsunterschiede machen sie verwundbar."
+  },
+
+];
+// ============================================================
+// AB HIER NICHTS ÄNDERN
+// ============================================================
+
+let current = 0;
+let results = []; // true/false per question
+let checked = false;
+
+function updateProgress() {
+  const pct = (current / QUESTIONS.length) * 100;
+  document.getElementById('progressBar').style.width = pct + '%';
+}
+
+function renderQuestion(idx) {
+  checked = false;
+  updateProgress();
+  const q = QUESTIONS[idx];
+  const stage = document.getElementById('quizStage');
+
+  stage.innerHTML = `
+    <p class="quiz-step-label">Frage <span>${idx + 1}</span> von <span>${QUESTIONS.length}</span></p>
+    <div class="qcard" id="qcard">
+      <p class="qcard-question">${q.question}</p>
+      <p class="qcard-hint">Eine oder mehrere Antworten können richtig sein.</p>
+      <div class="qcard-options" id="qoptions">
+        ${q.answers.map((a, i) => `
+          <label class="qopt" id="opt${i}">
+            <input type="checkbox" value="${i}" id="cb${i}">
+            <span class="qopt-box"></span>
+            <span class="qopt-text">${a.text}</span>
+          </label>
+        `).join('')}
+      </div>
+      <div class="qcard-nav">
+        <button class="btn btn-primary" id="btnCheck" onclick="checkQuestion()">Korrigieren</button>
+        <button class="btn btn-next hidden" id="btnNext" onclick="nextQuestion()">
+          ${idx + 1 < QUESTIONS.length ? 'Nächste Frage →' : 'Ergebnis anzeigen →'}
+        </button>
+      </div>
+    </div>
+  `;
+}
+
+function checkQuestion() {
+  if (checked) return;
+  checked = true;
+
+  const q = QUESTIONS[current];
+  const correctSet = new Set(q.answers.map((a, i) => a.correct ? i : -1).filter(i => i >= 0));
+  const selectedSet = new Set();
+
+  q.answers.forEach((_, i) => {
+    if (document.getElementById('cb' + i).checked) selectedSet.add(i);
+  });
+
+  const isFullyCorrect =
+    [...correctSet].every(i => selectedSet.has(i)) &&
+    [...selectedSet].every(i => correctSet.has(i));
+
+  results[current] = isFullyCorrect;
+
+  // Mark options
+  q.answers.forEach((_, i) => {
+    const opt = document.getElementById('opt' + i);
+    const cb  = document.getElementById('cb' + i);
+    cb.disabled = true;
+    opt.classList.add('locked');
+
+    const isCorrect  = correctSet.has(i);
+    const isSelected = selectedSet.has(i);
+
+    if (isSelected && isCorrect)  opt.classList.add('res-correct');
+    if (isSelected && !isCorrect) opt.classList.add('res-incorrect');
+    if (!isSelected && isCorrect) opt.classList.add('res-missed');
+  });
+
+  // Badge
+  const badge = document.createElement('div');
+  badge.className = 'qcard-result-badge ' + (isFullyCorrect ? 'badge-ok' : 'badge-err');
+  badge.textContent = isFullyCorrect ? '✓ Vollständig richtig!' : '✗ Nicht ganz richtig';
+  document.getElementById('qcard').insertBefore(badge, document.getElementById('qoptions'));
+
+  // Explanation
+  const exp = document.createElement('div');
+  exp.className = 'qcard-explanation';
+  exp.textContent = q.explanation;
+  document.getElementById('qoptions').after(exp);
+
+  // Show next, hide check
+  document.getElementById('btnCheck').classList.add('hidden');
+  document.getElementById('btnNext').classList.remove('hidden');
+}
+
+function nextQuestion() {
+  current++;
+  if (current < QUESTIONS.length) {
+    renderQuestion(current);
+  } else {
+    showScore();
+  }
+}
+
+function showScore() {
+  document.getElementById('progressBar').style.width = '100%';
+  const total   = QUESTIONS.length;
+  const correct = results.filter(Boolean).length;
+  const wrong   = total - correct;
+  const pct     = Math.round((correct / total) * 100);
+
+  const circumference = 2 * Math.PI * 54; // r=54
+  const offset = circumference - (pct / 100) * circumference;
+
+  const messages = [
+    [100, 'Ausgezeichnet! 🎉', 'Du hast alle Fragen perfekt beantwortet.'],
+    [66,  'Sehr gut!', 'Du hast das Thema gut im Griff.'],
+    [33,  'Nicht schlecht!', 'Schau nochmals in die Fallbeispiele rein.'],
+    [0,   'Weitermachen!', 'Lies die Fallbeispiele durch und versuche es erneut.'],
+  ];
+  const [, title, subtitle] = messages.find(([threshold]) => pct >= threshold);
+
+  document.getElementById('quizStage').innerHTML = `
+    <div class="score-screen">
+      <div class="score-donut-wrap">
+        <svg viewBox="0 0 120 120">
+          <circle class="score-donut-track" cx="60" cy="60" r="54"/>
+          <circle class="score-donut-fill" cx="60" cy="60" r="54"
+            stroke-dasharray="${circumference}"
+            stroke-dashoffset="${circumference}"
+            id="donutArc"/>
+        </svg>
+        <div class="score-donut-label">
+          <span class="score-donut-num">${pct}%</span>
+          <span class="score-donut-sub">${correct}/${total}</span>
+        </div>
+      </div>
+
+      <h2 class="score-title">${title}</h2>
+      <p class="score-subtitle">${subtitle}</p>
+
+      <div class="score-breakdown">
+        <div class="score-item">
+          <div class="score-item-num ok">${correct}</div>
+          <div class="score-item-label">Richtig</div>
+        </div>
+        <div class="score-item">
+          <div class="score-item-num err">${wrong}</div>
+          <div class="score-item-label">Falsch</div>
+        </div>
+        <div class="score-item">
+          <div class="score-item-num" style="color:var(--accent)">${total}</div>
+          <div class="score-item-label">Fragen total</div>
+        </div>
+      </div>
+
+      <div class="score-actions">
+        <button class="btn btn-primary" onclick="restartQuiz()">Quiz wiederholen</button>
+        <button class="btn btn-ghost" onclick="window.location.href='index.html'">← Zurück zur Karte</button>
+      </div>
+    </div>
+  `;
+
+  // Animate donut
+  requestAnimationFrame(() => {
+    setTimeout(() => {
+      document.getElementById('donutArc').style.strokeDashoffset = offset;
+    }, 100);
+  });
+}
+
+function restartQuiz() {
+  current = 0;
+  results = [];
+  renderQuestion(0);
+}
+
+// Init
+renderQuestion(0);
+</script>
+</body>
+</html>
