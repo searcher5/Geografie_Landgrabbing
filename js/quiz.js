@@ -27,10 +27,10 @@ const QUESTIONS = [
   {
     question: "Warum ist Land Grabbing oft besonders problematisch für indigene Völker?",
     answers: [
-      { text: "Sie haben oft keinen Zugang zu Anwält*innen oder Bildung, um sich zu wehren",         correct: true },
-      { text: "Ihr Land ist häufig nicht offiziell dokumentiert",              correct: true  },
-      { text: "Sie besitzen meist zu viel Land",                       correct: false },
-      { text: "Sie leben hauptsächlich in Städten",      correct: false  },
+      { text: "Sie haben oft keinen Zugang zu Anwält*innen oder Bildung, um sich zu wehren.",         correct: true },
+      { text: "Ihr Land ist häufig nicht offiziell dokumentiert.",              correct: true  },
+      { text: "Sie besitzen meist zu viel Land.",                       correct: false },
+      { text: "Sie leben hauptsächlich in Städten.",      correct: false  },
     ],
     explanation: "Indigene Völker sind besonders betroffen von Land Grabbing, da sie wegen ihrer mangelnden Bildung und Einbindung in das Rechtssystem des Staates keine offiziellen Dokumente besorgen können oder wollen. Auch fallen sie öfter auf Überzeugungsstrategien der Regierung oder der Investor*innen herein, ihr Land abzugeben."
   },
@@ -38,10 +38,10 @@ const QUESTIONS = [
   {
     question: "Was beschreibt der Begriff 'Grilagem' in Brasilien am besten?",
     answers: [
-      { text: "Schutz indigener Gebiete",                                          correct: false  },
-      { text: "Illegales Aneignen von Land durch gefälschte Dokumente",                                              correct: true  },
-      { text: "Staatliche Landreform",            correct: false },
-      { text: "Nachhaltige Landwirtschaft",            correct: false  },
+      { text: "Schutz indigener Gebiete.",                                          correct: false  },
+      { text: "Illegales Aneignen von Land durch gefälschte Dokumente.",                                              correct: true  },
+      { text: "Staatliche Landreform.",            correct: false },
+      { text: "Nachhaltige Landwirtschaft.",            correct: false  },
     ],
     explanation: "'Grilagem' bezeichnet den Landgewinn durch Land Grabbing und ist meistens mit einer Rodung des (Regen-) Waldes verbunden. Grilagem hat in Brasilien eine weit zurückreichende Geschichte und ist eng mit dem Abholzen des Amazonas' verknüpft."
   },
@@ -49,10 +49,10 @@ const QUESTIONS = [
   {
     question: "Warum können Investor*innen in Indonesien relativ einfach Land erwerben?",
     answers: [
-      { text: "Weil das Land kostenlos ist",   correct: false  },
-      { text: "Weil es kaum Landwirtschaft gibt",      correct: false },
-      { text: "Da es auf der Insel keine staatliche Überwachung gibt", correct: false },
-      { text: "Weil viel Land staatlich ist und indigene Rechte nicht anerkannt werden", correct: true },
+      { text: "Weil das Land kostenlos ist.",   correct: false  },
+      { text: "Weil es kaum Landwirtschaft gibt.",      correct: false },
+      { text: "Da es auf der Insel keine staatliche Überwachung gibt.", correct: false },
+      { text: "Weil viel Land staatlich ist und indigene Rechte nicht anerkannt werden.", correct: true },
     ],
     explanation: "In Indonesien wird über 80% des traditionell von indigenen Völkern bewirtschafteten Landes vom Staat nicht anerkannt. Es gilt rechtlich als Staatsland und kann günstig an Investor*innen vergeben werden. Gesetzlich haben indigene Völker grundsätzlich Rechte, doch die fehlende formelle Anerkennung und Bildungsunterschiede machen sie verwundbar."
   },
@@ -60,10 +60,10 @@ const QUESTIONS = [
   {
     question: "Warum profitieren Einheimische oft nicht von neuen Plantagen durch Land Grabbing?",
     answers: [
-      { text: "Die Arbeitsplätze werden meist schlecht bezahlt",   correct: true  },
-      { text: "Die Produkte werden exportiert, statt lokal verwendet zu werden",      correct: true },
-      { text: "Die versprochene Infrastruktur wird nicht gebaut oder dient den Einheimischen nicht", correct: true },
-      { text: "Die Pacht bringt nicht viel Geld ein und dieses fliesst oft an die Regierung statt an die lokale Gemeinde", correct: true },
+      { text: "Die Arbeitsplätze werden meist schlecht bezahlt.",   correct: true  },
+      { text: "Die Produkte werden exportiert, statt lokal verwendet zu werden.",      correct: true },
+      { text: "Die versprochene Infrastruktur wird nicht gebaut oder dient den Einheimischen nicht.", correct: true },
+      { text: "Die Pacht bringt nicht viel Geld ein und dieses fliesst oft an die Regierung statt an die lokale Gemeinde.", correct: true },
     ],
     explanation: "Auf Plantagen dieser Investor*innen werden nur selten lokale Nahrungsmittel angebaut. Oft werden Pflanzen für Nutztiere oder Biokraftstoff angebaut. Um mit der Konkurrenz mithalten zu können, setzen die Farmbesitzer*innen auf billige Arbeitskräfte und kaufen nur das preiswerteste Land. Solange der Export läuft, kümmern sie sich nicht um lokale Infrastruktur oder das Wohl der Anwohnenden."
   },
@@ -71,10 +71,10 @@ const QUESTIONS = [
   {
     question: "Welche Rolle spielen internationale Abkommen beim Land Grabbing?",
     answers: [
-      { text: "Sie verhindern Landkäufe komplett",   correct: false  },
-      { text: "Sie schützen nur die lokale Bevölkerung",      correct: false },
-      { text: "Sie schützen Investitionen ", correct: true },
-      { text: "Sie liberalisieren Landkäufe", correct: true },
+      { text: "Sie verhindern Landkäufe komplett.",   correct: false  },
+      { text: "Sie schützen nur die lokale Bevölkerung.",      correct: false },
+      { text: "Sie schützen Investitionen.", correct: true },
+      { text: "Sie liberalisieren Landkäufe.", correct: true },
     ],
     explanation: "Viele internationale Abkommen sind neoliberalistisch geprägt. Sie schützen Investitionen und sorgen dafür, dass man risikofrei und möglichst unbürokratisch Agrarflächen in anderen Ländern kaufen oder pachten kann."
   },
@@ -82,10 +82,10 @@ const QUESTIONS = [
   {
     question: "Warum wird Land Grabbing oft als „rechtliche Grauzone“ bezeichnet?",
     answers: [
-      { text: "Weil Gesetze unklar sind oder umgangen werden",   correct: true  },
-      { text: "Weil es nur in S1 und S2 Ländern passiert",      correct: false },
-      { text: "Weil es immer illegal ist", correct: false },
-      { text: "Weil die Staaten nichts gegen die Investor*innen tun dürfen", correct: false },
+      { text: "Weil Gesetze unklar sind oder umgangen werden.",   correct: true  },
+      { text: "Weil es nur in S1 und S2 Ländern passiert.",      correct: false },
+      { text: "Weil es immer illegal ist.", correct: false },
+      { text: "Weil die Staaten nichts gegen die Investor*innen tun dürfen.", correct: false },
     ],
     explanation: "Investor*innen, die Land Grabbing betreiben, profitieren oft von schlechter Regulierung. Was sie tun, kann oft als legal ausgelegt werden, obwohl es soziale und ökologische Konsequenzen nach sich zieht. Allerdings müssen sich auch Land Grabber nicht gesetzlich immun. Deswegen sind besonders Gebiete mit schwacher staatlicher Kontrolle beliebt."
   },
@@ -93,10 +93,10 @@ const QUESTIONS = [
   {
     question: "Warum führt Land Grabbing oft zu Konflikten?",
     answers: [
-      { text: "Weil dort bereits andere Bauprojekte im Gange sind",   correct: false  },
-      { text: "Weil verschiedene Gruppen Anspruch auf dasselbe Land erheben",      correct: true },
-      { text: "Weil es zu viel Land gibt", correct: false },
-      { text: "Weil Investor*innen keine Gewinne machen", correct: false },
+      { text: "Weil dort bereits andere Bauprojekte im Gange sind.",   correct: false  },
+      { text: "Weil verschiedene Gruppen Anspruch auf dasselbe Land erheben.",      correct: true },
+      { text: "Weil es zu viel Land gibt.", correct: false },
+      { text: "Weil Investor*innen keine Gewinne machen.", correct: false },
     ],
     explanation: "Viele Gebiete, die billig aufgekauft werden, gehörten davor einzelnen Bäuer*innen oder Völkern. Doch anders als in der Schweiz reicht das Argument des Gewohnheitsrechts in betroffenen Ländern oft nicht aus. Keine Urkunde: Kein Anrecht."
   },
@@ -104,10 +104,10 @@ const QUESTIONS = [
   {
     question: "Inwiefern hat Land Grabbing einen Einfluss auf die globale Hungerkrise?",
     answers: [
-      { text: "Land Grabbing verschärft die Hungersituation, da fruchtbares Land oft für Exportprodukte genutzt wird, wodurch lokale Kleinbäuer*innen verdrängt werden",   correct: true  },
-      { text: "Land Grabbing verbessert grundsätzlich die Ernährungssituation, da grosse Investor*innen effizienter produzieren und somit mehr Nahrung für die lokalen Gemeinden verfügbar wird",      correct: false },
-      { text: "Land Grabbing hat kaum Einfluss auf Hunger, da die globale Nahrungsmittelproduktion bereits ausreichend ist und Hunger nur durch individuelle Faktoren entsteht", correct: false },
-      { text: "Nach zu intensiver Bewirtschaftung des Agrarlands wird das unfruchtbare Land zurück gelassen und kann nicht mehr zur lokalen Nahrungsmittelproduktion verwendet werden", correct: true },
+      { text: "Land Grabbing verschärft die Hungersituation, da fruchtbares Land oft für Exportprodukte genutzt wird, wodurch lokale Kleinbäuer*innen verdrängt werden.",   correct: true  },
+      { text: "Land Grabbing verbessert grundsätzlich die Ernährungssituation, da grosse Investor*innen effizienter produzieren und somit mehr Nahrung für die lokalen Gemeinden verfügbar wird.",      correct: false },
+      { text: "Land Grabbing hat kaum Einfluss auf Hunger, da die globale Nahrungsmittelproduktion bereits ausreichend ist und Hunger nur durch individuelle Faktoren entsteht.", correct: false },
+      { text: "Nach zu intensiver Bewirtschaftung des Agrarlands wird das unfruchtbare Land zurück gelassen und kann nicht mehr zur lokalen Nahrungsmittelproduktion verwendet werden.", correct: true },
     ],
     explanation: "Indem grossflächig Monokulturen mit Hilfe von Pestiziden herangezüchtet werden, degradiert die Qualität des Bodens. Ein Grossteil der Erzeugnisse wird exportiert und steht nicht mehr der lokalen Bevölkerung zur Verfügung."
   },
@@ -115,10 +115,10 @@ const QUESTIONS = [
   {
     question: "Warum trägt Land Grabbing zu ungleichen Machtverhältnissen in der Nahrungsmittelproduktion bei?",
     answers: [
-      { text: "Land Grabbing stärkt Kleinbäuer*innen, da sie durch Landverkäufe Zugang zu Kapital erhalten und ihre Produktion modernisieren können",   correct: false  },
-      { text: "Land Grabbing führt zu einem Machtverlust der Investor*innen, da sowohl lokale Bäuer*innen als auch Investor*innen gleichberechtigt über Landnutzung entscheiden",      correct: false },
-      { text: "Land Grabbing verstärkt ungleiche Machtverhältnisse, da grosse Investor*innen, Staaten oder transnationale Unternehmen Kontrolle über Land, Produktion und Export gewinnen", correct: true },
-      { text: "Durch Land Grabbing verlieren Kleinbäuer*innen ihr Land und geraten in totale Abhängigkeit von transnationalen Unternehmen ", correct: true },
+      { text: "Land Grabbing stärkt Kleinbäuer*innen, da sie durch Landverkäufe Zugang zu Kapital erhalten und ihre Produktion modernisieren können.",   correct: false  },
+      { text: "Land Grabbing führt zu einem Machtverlust der Investor*innen, da sowohl lokale Bäuer*innen als auch Investor*innen gleichberechtigt über Landnutzung entscheiden.",      correct: false },
+      { text: "Land Grabbing verstärkt ungleiche Machtverhältnisse, da grosse Investor*innen, Staaten oder transnationale Unternehmen Kontrolle über Land, Produktion und Export gewinnen.", correct: true },
+      { text: "Durch Land Grabbing verlieren Kleinbäuer*innen ihr Land und geraten in totale Abhängigkeit von transnationalen Unternehmen.", correct: true },
     ],
     explanation: "Internationale Unternehmen verfügen oft über immenses Kapital und ein riesiges Rechtsteam, mit denen sie jeden Widerstand niederzwingen können."
   },
@@ -126,13 +126,13 @@ const QUESTIONS = [
   {
     question: "Wie wird Land Grabbing durch die Globalisierung gefördert?",
     answers: [
-      { text: "Durch zunehmende lokale Selbstversorgung, wodurch internationale Investitionen in Landwirtschaft willkommen werden",   correct: false  },
-      { text: "Durch sinkende Nachfrage nach Agrarprodukten, was Investitionen in landwirtschaftliche Flächen attraktiver macht",      correct: false },
-      { text: "Durch Globalisierung wird Land Grabbing gefördert, da internationale Kapitalströme, transnationale Unternehmen und Staaten leichter in ausländische Agrarflächen investieren können", correct: true },
-      { text: "Die globale Nachfrage nach Nahrungsmitteln, Futtermitteln und Bioenergie steigt und somit steigt auch die Bedeutung von Agrarland", correct: true },
+      { text: "Durch zunehmende lokale Selbstversorgung, wodurch internationale Investitionen in Landwirtschaft willkommen werden.",   correct: false  },
+      { text: "Durch sinkende Nachfrage nach Agrarprodukten, was Investitionen in landwirtschaftliche Flächen attraktiver macht.",      correct: false },
+      { text: "Durch Globalisierung wird Land Grabbing gefördert, da internationale Kapitalströme, transnationale Unternehmen und Staaten leichter in ausländische Agrarflächen investieren können.", correct: true },
+      { text: "Die globale Nachfrage nach Nahrungsmitteln, Futtermitteln und Bioenergie steigt und somit steigt auch die Bedeutung von Agrarland.", correct: true },
     ],
     explanation: "Globalisierung führt zu einer internationalen Vernetzung und unterstützt internationalen Handel (z.B. durch Handelsabkommen). Somit wächst sowohl das Angebot an Agrarflächen, als auch der Absatzmarkt für die dort produzierten Produkte."
-  },
+  }
 ];
 
 // ============================================================
