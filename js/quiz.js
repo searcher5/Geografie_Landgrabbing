@@ -104,12 +104,34 @@ const QUESTIONS = [
   {
     question: "Inwiefern hat Land Grabbing einen Einfluss auf die globale Hungerkrise?",
     answers: [
-      { text: "Land Grabbing verschärft die Hungersituation, da fruchtbares Land oft für Exportprodukte genutzt wird, wodurch lokale Kleinbauern verdrängt werden.",   correct: false  },
-      { text: "Land Grabbing verbessert grundsätzlich die Ernährungssituation, da grosse Investor*innen effizienter produzieren und somit mehr Nahrung für die lokalen Gemeinden verfügbar wird.",      correct: true },
-      { text: "Land Grabbing hat kaum Einfluss auf Hunger, da die globale Nahrungsmittelproduktion bereits ausreichend ist und Hunger nur durch individuelle Faktoren entsteht.", correct: false },
-      { text: "Nach zu intensiver Bewirtschaftung des Agrarlands wird das unfruchtbare Land zurück gelassen und kann nicht mehr zur lokalen Nahrungsmittelproduktion verwendet werden. ", correct: false },
+      { text: "Land Grabbing verschärft die Hungersituation, da fruchtbares Land oft für Exportprodukte genutzt wird, wodurch lokale Kleinbäuer*innen verdrängt werden",   correct: true  },
+      { text: "Land Grabbing verbessert grundsätzlich die Ernährungssituation, da grosse Investor*innen effizienter produzieren und somit mehr Nahrung für die lokalen Gemeinden verfügbar wird",      correct: false },
+      { text: "Land Grabbing hat kaum Einfluss auf Hunger, da die globale Nahrungsmittelproduktion bereits ausreichend ist und Hunger nur durch individuelle Faktoren entsteht", correct: false },
+      { text: "Nach zu intensiver Bewirtschaftung des Agrarlands wird das unfruchtbare Land zurück gelassen und kann nicht mehr zur lokalen Nahrungsmittelproduktion verwendet werden", correct: true },
     ],
-    explanation: "Viele Gebiete, die billig aufgekauft werden, gehörten davor einzelnen Bäuer*innen oder Völkern. Doch anders als in der Schweiz reicht das Argument des Gewohnheitsrechts in betroffenen Ländern oft nicht aus. Keine Urkunde: Kein Anrecht."
+    explanation: "Indem grossflächig Monokulturen mit Hilfe von Pestiziden herangezüchtet werden, degradiert die Qualität des Bodens. Ein Grossteil der Erzeugnisse wird exportiert und steht nicht mehr der lokalen Bevölkerung zur Verfügung."
+  },
+
+  {
+    question: "Warum trägt Land Grabbing zu ungleichen Machtverhältnissen in der Nahrungsmittelproduktion bei?",
+    answers: [
+      { text: "Land Grabbing stärkt Kleinbäuer*innen, da sie durch Landverkäufe Zugang zu Kapital erhalten und ihre Produktion modernisieren können",   correct: false  },
+      { text: "Land Grabbing führt zu einem Machtverlust der Investor*innen, da sowohl lokale Bäuer*innen als auch Investor*innen gleichberechtigt über Landnutzung entscheiden",      correct: false },
+      { text: "Land Grabbing verstärkt ungleiche Machtverhältnisse, da grosse Investor*innen, Staaten oder transnationale Unternehmen Kontrolle über Land, Produktion und Export gewinnen", correct: true },
+      { text: "Durch Land Grabbing verlieren Kleinbäuer*innen ihr Land und geraten in totale Abhängigkeit von transnationalen Unternehmen ", correct: true },
+    ],
+    explanation: "Internationale Unternehmen verfügen oft über immenses Kapital und ein riesiges Rechtsteam, mit denen sie jeden Widerstand niederzwingen können."
+  },
+
+  {
+    question: "Wie wird Land Grabbing durch die Globalisierung gefördert?",
+    answers: [
+      { text: "Durch zunehmende lokale Selbstversorgung, wodurch internationale Investitionen in Landwirtschaft willkommen werden",   correct: false  },
+      { text: "Durch sinkende Nachfrage nach Agrarprodukten, was Investitionen in landwirtschaftliche Flächen attraktiver macht",      correct: false },
+      { text: "Durch Globalisierung wird Land Grabbing gefördert, da internationale Kapitalströme, transnationale Unternehmen und Staaten leichter in ausländische Agrarflächen investieren können", correct: true },
+      { text: "Die globale Nachfrage nach Nahrungsmitteln, Futtermitteln und Bioenergie steigt und somit steigt auch die Bedeutung von Agrarland", correct: true },
+    ],
+    explanation: "Globalisierung führt zu einer internationalen Vernetzung und unterstützt internationalen Handel (z.B. durch Handelsabkommen). Somit wächst sowohl das Angebot an Agrarflächen, als auch der Absatzmarkt für die dort produzierten Produkte."
   },
 ];
 
