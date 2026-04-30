@@ -87,7 +87,7 @@ const QUESTIONS = [
       { text: "Weil es immer illegal ist.", correct: false },
       { text: "Weil die Staaten nichts gegen die Investor*innen tun dürfen.", correct: false },
     ],
-    explanation: "Investor*innen, die Land Grabbing betreiben, profitieren oft von schlechter Regulierung. Was sie tun, kann oft als legal ausgelegt werden, obwohl es soziale und ökologische Konsequenzen nach sich zieht. Allerdings müssen sich auch Land Grabber nicht gesetzlich immun. Deswegen sind besonders Gebiete mit schwacher staatlicher Kontrolle beliebt."
+    explanation: "Investor*innen, die Land Grabbing betreiben, profitieren oft von schlechter Regulierung. Was sie tun, kann als legal ausgelegt werden, obwohl es soziale und ökologische Konsequenzen nach sich zieht. Allerdings sind auch Land Grabber nicht gesetzlich immun. Deswegen sind besonders Gebiete mit schwacher staatlicher Kontrolle beliebt."
   },
   
   {
